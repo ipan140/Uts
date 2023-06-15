@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Databarang;
+use App\Http\Controllers\Datasatuan;
 use App\Http\Controllers\homeawalan;
 use App\Http\Controllers\Profileuser;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,4 @@ Route::get('/', function () {
 Route::get('home', [homeawalan::class, 'index'])->name('home'); 
 Route::get('profile', Profileuser::class)->name('profile');
 Route::resource('barang', Databarang::class);
+Route::resource('satuan', Datasatuan::class);

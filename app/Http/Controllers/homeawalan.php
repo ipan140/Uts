@@ -8,8 +8,8 @@ class homeawalan extends Controller
 {
     function index()
     {
-        $pageTitle = 'Home';
-        return view('home', ['pageTitle' => $pageTitle]);
+        $halamanPage = 'Home';
+        return view('home', ['halamanPage' => $halamanPage]);
     }
 
 }

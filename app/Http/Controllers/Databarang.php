@@ -14,7 +14,7 @@ class Databarang extends Controller
      */
     public function index()
     {
-        $halamanPage = "list barang index";
+        $halamanPage = "list barang";
         $barang = Barang::all();
         return view('barang.index',[
             'halamanPage'=>$halamanPage,
@@ -44,14 +44,15 @@ class Databarang extends Controller
             'required' => 'Attribute harus diisi',
         ];
         $validator = Validator::make($request->all(), [
-            'kode_barang'=>'required',
+            'kode_barang'=>'required|regex:/^[1-9]+$/',
             'nama_barang'=>'required',
-            'harga_barang'=>'required',
+            'harga_barang'=>'required|numeric',
             'deskripsi_barang'=>'required'
         ], $messages);
         if ($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
+
         $barang = New Barang();
         $barang->kode_barang = $request->kode_barang;
         $barang->nama_barang = $request->nama_barang;
@@ -101,9 +102,9 @@ class Databarang extends Controller
             'required' => 'Attribute harus diisi',
         ];
         $validator = Validator::make($request->all(), [
-            'kode_barang'=>'required',
+            'kode_barang'=>'required|regex:/[A-Z]/^+$',
             'nama_barang'=>'required',
-            'harga_barang'=>'required',
+            'harga_barang'=>'required|numeric',
             'deskripsi_barang'=>'required'
         ], $messages);
         if ($validator->fails()){
